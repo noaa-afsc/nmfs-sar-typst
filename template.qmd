@@ -1,0 +1,25 @@
+---
+title: Stock Assessment Report for a Marine Mammal in Alaska
+format:
+  nmfs-sar-template-typst: default
+mainfont: "STIX Two Text"
+font-paths: "./assets/fonts"
+author:
+  - name: Josh M. London
+    email: josh.london@noaa.gov
+  - name: Brian S. Fadely
+    email: brian.fadely@noaa.gov
+abstract: |
+  {{< lipsum 1 >}}
+---
+
+## Introduction
+
+{{< lipsum 2 >}}
+
+## More Information
+
+{{< lipsum 3 >}}
+
+
+
