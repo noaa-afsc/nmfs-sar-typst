@@ -37,7 +37,7 @@
     numbering: "1",
     header: align(right + horizon)[
       #set text(
-        font: "Roboto",
+        font: "Source Sans 3",
         fill: rgb("#5EB6D9"))
       ALASKA FISHERIES SCIENCE CENTER],
     // Define the background for the first page
@@ -59,7 +59,7 @@
     [#grid(columns: (35%, 1fr))[][
       #text(weight: "regular", 
             size: 1.5em, 
-            font: "Roboto",
+            font: "Source Sans 3",
             fill: rgb("#00559B"))[#title]
     ]]
   }
@@ -72,7 +72,7 @@
     columns: (75%,25%),
       if abstract != none { 
     block(fill: rgb("#F1F2F3"), inset: 1em)[
-    #text(font: "Roboto", size: 1.1em)[#abstract-title \ ] #abstract
+    #text(font: "Source Sans 3")[#abstract]
     ]
   },
     // Display the authors list.
@@ -86,9 +86,9 @@
       rows: slice.len(),
       row-gutter: 1em,
       ..slice.map(author => align(right, {
-        text(font: "Roboto", weight: "semibold", author.name)
+        text(font: "Source Sans 3", weight: "semibold", author.name)
         if "email" in author [
-          \ #text(font: "Roboto", size: 0.75em, author.email)
+          \ #text(font: "Source Sans 3", size: 0.75em, author.email)
         ]
       }))
     )
