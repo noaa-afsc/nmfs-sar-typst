@@ -1,5 +1,7 @@
 ---
-title: Stock Assessment Report for a Marine Mammal in Alaska
+title: Stock Assessment Report for a Cetacean or Pinniped Marine Mammal (_Genus species_) 
+  in Alaska or the North Pacific Ocean. This title is especially long for demonstration
+  purposes
 format:
   nmfs-sar-template-typst: default
 mainfont: "STIX Two Text"
@@ -7,19 +9,80 @@ font-paths: "./assets/fonts"
 author:
   - name: Josh M. London
     email: josh.london@noaa.gov
+    affiliations:
+      - ref: afsc
   - name: Brian S. Fadely
     email: brian.fadely@noaa.gov
+    affiliations:
+      - ref: afsc
+affiliations:
+  - id: afsc
+    name: Alaska Fisheries Science Center
+    city: Seattle
+    state: Washington
+    country: USA      
 abstract: |
   {{< lipsum 1 >}}
 ---
 
 ## Introduction
 
-{{< lipsum 2 >}}
+{{< lipsum 1 >}}
+
+```{r}
+#| label: tbl-abundance-estimates
+#| echo: false
+#| warning: false
+#| tbl-cap: Abundance estimates of a some seal species across different stocks
+library(tibble)
+library(gt)
+library(gtExtras)
+abundance_estimates <- tibble::tibble(
+  Stock = c("Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta", "Eta", "Theta", "Iota", "Kappa", "Lambda", "Omega"),
+  Abundance2023 = c(6000L, 150L, 36000L, 8000L, 19000L, 38000L, 32000L, 6000L, 11000L, 12000L, 21000L, 23000L),
+  StdError = c(250L, 25L, 2000L, 1200L, 2100L, 2000L, 2300L, 875L, 850L, 850L, 2000L, 2000L),
+  Lower95CI = c(5000L, 90L, 32000L, 6000L, 16000L, 34000L, 28000L, 4000L, 10000L, 10000L, 17000L, 20000L),
+  Upper95CI = c(6000L, 190L, 40000L, 10000L, 24000L, 42000L, 38000L, 7000L, 13000L, 13000L, 25000L, 29000L),
+  CV = c(0.04, 0.18, 0.06, 0.15, 0.11, 0.05, 0.07, 0.14, 0.07, 0.07, 0.09, 0.1),
+  Pdecline = c(0.6, 0.65, 0.42, 0.275, 0.20, 0.995, 0.4, 0.40, 0.625, 0.775, 0.65, 0.85)
+)
+
+gt(abundance_estimates |> dplyr::select(-StdError)) |> 
+  cols_label(
+    Abundance2023 = "2023 Abundance",
+    Pdecline = html("Prob. of Decline<br>(2015-2023)")
+  ) |>
+  fmt_number(columns = c(Abundance2023,Lower95CI,Upper95CI),
+              decimals = 0) |> 
+  fmt_percent(columns = Pdecline, decimals = 1) |> 
+  cols_merge_range(
+    col_begin = Lower95CI,
+    col_end = Upper95CI
+  ) |>
+  cols_label(Lower95CI = "95% Confidence Range") |> 
+  gt_hulk_col_numeric(Pdecline, reverse = TRUE) |> 
+  opt_table_font(font = "Source Sans Pro") |> 
+  opt_row_striping() |> 
+  tab_options(table.width = px(700),
+              table.font.size = 11) |> 
+  cols_width(
+    Stock ~ pct(30)
+  ) |> 
+  tab_style(
+    style = cell_text(color = "dodgerblue4", size=px(12), weight="bold"),
+    locations = cells_column_labels()
+  ) |> 
+  tab_style(
+    style = cell_text(color="black"),
+    locations = cells_body(columns = c(Stock,Abundance2023))
+  ) |> 
+  tab_style(
+    style = cell_text(color="grey50"),
+    locations = cells_body(columns = c(Lower95CI,CV))
+  )
+```
 
 ## More Information
 
 {{< lipsum 3 >}}
-
-
 

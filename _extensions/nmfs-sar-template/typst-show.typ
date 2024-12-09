@@ -27,6 +27,7 @@ $endif$
 $endfor$
     ),
 $endif$
+
 $if(date)$
   date: [$date$],
 $endif$
@@ -71,7 +72,7 @@ $endif$
 
 #show heading: it => block(width: 100%)[
   #set text(weight: "regular", 
-            font: "Roboto",
+            font: "Source Sans 3",
             fill: rgb("#00559B"))
   #(it.body)
 ]

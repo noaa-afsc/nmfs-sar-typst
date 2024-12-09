@@ -14,6 +14,7 @@
 #let article(
   title: none,
   authors: none,
+  affiliations: none,
   date: none,
   abstract: none,
   abstract-title: none,
@@ -39,14 +40,15 @@
       #set text(
         font: "Source Sans 3",
         fill: rgb("#5EB6D9"))
-      ALASKA FISHERIES SCIENCE CENTER],
+      ALASKA MARINE MAMMAL STOCK ASSESSMENT REPORT],
     // Define the background for the first page
     background: context { if(counter(page).get().at(0)== 1) {
       align(left + top)[
-      #image("assets/22Fisheries SEA_T1 CornerTall.png", width: 35%)
+      #image("assets/22Fisheries SEA_T1 CornerTall.png", width: 20%)
     ]}
 } 
   )
+
   set par(justify: true)
   set text(lang: lang,
            region: region,
@@ -56,26 +58,35 @@
   set heading(numbering: sectionnumbering)
 
   if title != none {
-    [#grid(columns: (35%, 1fr))[][
-      #text(weight: "regular", 
+    [#grid(columns: (85%,1fr),
+            align: (left + top),
+            inset: (y: 10pt)
+  )[
+      #text(weight: "semibold", 
             size: 1.5em, 
             font: "Source Sans 3",
             fill: rgb("#00559B"))[#title]
-    ]]
+    ][]]
   }
 
-  line(length: 100%, stroke: rgb("#00559B"))
-  
-  v(2em)
+text(authors.enumerate().map(((i, author)) => author.name + [ ] + super[#(i+1)]).join(", "))
+    v(2pt)
+set text(8pt)
+text(authors.enumerate().map(((i, author)) => super[#(i+1)]+ [ ] + author.email).join(", "))
+set text(size: fontsize)
 
-  grid(
-    columns: (75%,25%),
+/*   grid(
+    columns: (20%,75%),
+    column-gutter: 5%,
+    {image("assets/640x427-harbor-seal.png") 
+    text(10pt)[Some Seal Species \ (_Genus species_)]},
       if abstract != none { 
     block(fill: rgb("#F1F2F3"), inset: 1em)[
     #text(font: "Source Sans 3")[#abstract]
     ]
-  },
-    // Display the authors list.
+  }
+
+     // Display the authors list.
   for i in range(calc.ceil(authors.len() / 3)) {
     let end = calc.min((i + 1) * 3, authors.len())
     let is-last = authors.len() == end
@@ -96,9 +107,8 @@
     if not is-last {
       v(16pt, weak: true)
     }
-  }
-  )
-
+  } 
+  ) */
   v(2em, weak: true)
 
 
