@@ -4,8 +4,7 @@ title: Stock Assessment Report for a Cetacean or Pinniped Marine Mammal (_Genus 
   purposes
 format:
   nmfs-sar-template-typst: default
-mainfont: "STIX Two Text"
-font-paths: "./assets/fonts"
+
 author:
   - name: Josh M. London
     email: josh.london@noaa.gov

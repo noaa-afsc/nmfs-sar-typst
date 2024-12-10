@@ -23,7 +23,8 @@
   paper: "us-letter",
   lang: "en",
   region: "US",
-  font: (),
+  font: "STIX Two Text",
+  font-paths: "_extensions/nmfs-sar-template/assets/fonts",
   fontsize: 11pt,
   sectionnumbering: none,
   toc: false,
@@ -38,13 +39,13 @@
     numbering: "1",
     header: align(right + horizon)[
       #set text(
-        font: "Source Sans 3",
+        font: "Open Sans",
         fill: rgb("#5EB6D9"))
       ALASKA MARINE MAMMAL STOCK ASSESSMENT REPORT],
     // Define the background for the first page
     background: context { if(counter(page).get().at(0)== 1) {
       align(left + top)[
-      #image("assets/22Fisheries SEA_T1 CornerTall.png", width: 20%)
+      #image("_extensions/nmfs-sar-template/assets/22Fisheries SEA_T1 CornerTall.png", width: 20%)
     ]}
 } 
   )
@@ -64,14 +65,14 @@
   )[
       #text(weight: "semibold", 
             size: 1.5em, 
-            font: "Source Sans 3",
+            font: "Open Sans",
             fill: rgb("#00559B"))[#title]
     ][]]
   }
 
 text(authors.enumerate().map(((i, author)) => author.name + [ ] + super[#(i+1)]).join(", "))
     v(2pt)
-set text(8pt)
+set text(9pt)
 text(authors.enumerate().map(((i, author)) => super[#(i+1)]+ [ ] + author.email).join(", "))
 set text(size: fontsize)
 
