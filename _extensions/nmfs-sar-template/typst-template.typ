@@ -13,19 +13,25 @@
 
 #let article(
   title: none,
+  subtitle: none,
   authors: none,
-  affiliations: none,
   date: none,
   abstract: none,
   abstract-title: none,
   cols: 1,
-  margin: (x: 1.22in, y: 1.2in),
+  margin: (x: 1.25in, y: 1.25in),
   paper: "us-letter",
   lang: "en",
   region: "US",
   font: "STIX Two Text",
-  font-paths: "_extensions/nmfs-sar-template/assets/fonts",
   fontsize: 11pt,
+  title-size: 1.5em,
+  subtitle-size: 1.25em,
+  heading-family: "Open Sans",
+  heading-weight: "semibold",
+  heading-style: "normal",
+  heading-color: rgb("#00559B"),
+  heading-line-height: 0.65em,
   sectionnumbering: none,
   toc: false,
   toc_title: none,
@@ -33,7 +39,7 @@
   toc_indent: 1.5em,
   doc,
 ) = {
-   set page(
+  set page(
     paper: paper,
     margin: margin,
     numbering: "1",
@@ -49,70 +55,46 @@
     ]}
 } 
   )
-
-  set par(justify: true)
-  set text(lang: lang,
+   set text(lang: lang,
            region: region,
            font: font,
            size: fontsize,
            fill: rgb("#323C46"))
   set heading(numbering: sectionnumbering)
-
   if title != none {
-    [#grid(columns: (85%,1fr),
-            align: (left + top),
-            inset: (y: 10pt)
-  )[
-      #text(weight: "semibold", 
-            size: 1.5em, 
-            font: "Open Sans",
-            fill: rgb("#00559B"))[#title]
-    ][]]
+    align(left)[#block(inset: (left: 2em, right: 2em, top: 2em, bottom: 1em))[
+      #set par(leading: heading-line-height)
+      #if (heading-family != none or heading-weight != "bold" or heading-style != "normal"
+           or heading-color != black or heading-decoration == "underline"
+           or heading-background-color != none) {
+        set text(font: heading-family, weight: heading-weight, style: heading-style, fill: heading-color)
+        text(size: title-size)[#title]
+        if subtitle != none {
+          parbreak()
+          text(size: subtitle-size)[#subtitle]
+        }
+      } else {
+        text(weight: "bold", size: title-size)[#title]
+        if subtitle != none {
+          parbreak()
+          text(weight: "bold", size: subtitle-size)[#subtitle]
+        }
+      }
+    ]]
   }
 
-text(authors.enumerate().map(((i, author)) => author.name + [ ] + super[#(i+1)]).join(", "))
-    v(2pt)
-set text(9pt)
-text(authors.enumerate().map(((i, author)) => super[#(i+1)]+ [ ] + author.email).join(", "))
-set text(size: fontsize)
-
-/*   grid(
-    columns: (20%,75%),
-    column-gutter: 5%,
-    {image("assets/640x427-harbor-seal.png") 
-    text(10pt)[Some Seal Species \ (_Genus species_)]},
-      if abstract != none { 
-    block(fill: rgb("#F1F2F3"), inset: 1em)[
-    #text(font: "Source Sans 3")[#abstract]
-    ]
+if authors != none {
+  block(inset: (left: 2em, right: 2em))[
+  #set text(size: 11pt)
+  #table(
+  columns: (1fr, 1fr),
+  row-gutter: 0.1em,
+  ..for (name, affiliation) in authors {
+    (name, affiliation)
   }
-
-     // Display the authors list.
-  for i in range(calc.ceil(authors.len() / 3)) {
-    let end = calc.min((i + 1) * 3, authors.len())
-    let is-last = authors.len() == end
-    let slice = authors.slice(i * 3, end)
-    set align(right)
-    grid(
-      columns: 1,
-      rows: slice.len(),
-      row-gutter: 1em,
-      ..slice.map(author => align(right, {
-        text(font: "Source Sans 3", weight: "semibold", author.name)
-        if "email" in author [
-          \ #text(font: "Source Sans 3", size: 0.75em, author.email)
-        ]
-      }))
-    )
-
-    if not is-last {
-      v(16pt, weak: true)
-    }
-  } 
-  ) */
-  v(2em, weak: true)
-
-
+)
+  ]
+}
 
   if date != none {
     align(center)[#block(inset: 1em)[

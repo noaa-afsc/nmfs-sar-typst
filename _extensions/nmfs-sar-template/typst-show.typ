@@ -16,6 +16,9 @@
 $if(title)$
   title: [$title$],
 $endif$
+$if(subtitle)$
+  subtitle: [$subtitle$],
+$endif$
 $if(by-author)$
   authors: (
 $for(by-author)$
@@ -27,7 +30,6 @@ $endif$
 $endfor$
     ),
 $endif$
-
 $if(date)$
   date: [$date$],
 $endif$
@@ -49,9 +51,33 @@ $if(papersize)$
 $endif$
 $if(mainfont)$
   font: ("$mainfont$",),
+$elseif(brand.typography.base.family)$
+  font: ("$brand.typography.base.family$",),
 $endif$
 $if(fontsize)$
   fontsize: $fontsize$,
+$elseif(brand.typography.base.size)$
+  fontsize: $brand.typography.base.size$,
+$endif$
+$if(title)$
+$if(brand.typography.headings.family)$
+  heading-family: ("$brand.typography.headings.family$",),
+$endif$
+$if(brand.typography.headings.weight)$
+  heading-weight: $brand.typography.headings.weight$,
+$endif$
+$if(brand.typography.headings.style)$
+  heading-style: "$brand.typography.headings.style$",
+$endif$
+$if(brand.typography.headings.decoration)$
+  heading-decoration: "$brand.typography.headings.decoration$",
+$endif$
+$if(brand.typography.headings.color)$
+  heading-color: $brand.typography.headings.color$,
+$endif$
+$if(brand.typography.headings.line-height)$
+  heading-line-height: $brand.typography.headings.line-height$,
+$endif$
 $endif$
 $if(section-numbering)$
   sectionnumbering: "$section-numbering$",
@@ -70,9 +96,35 @@ $endif$
   doc,
 )
 
+#show math.equation: set text(font: "STIX Two Math")
+
 #show heading: it => block(width: 100%)[
   #set text(weight: "regular", 
-            font: "Source Sans 3",
+            font: "Open Sans",
             fill: rgb("#00559B"))
   #(it.body)
+]
+
+#show figure: set block(inset: (top: 1em, bottom: 1em))
+
+#show figure.caption: c => [
+  #set par(justify: true)
+  #align(left)[
+  #text(fill: luma(130), weight: "bold", size: 11pt)[
+    #c.supplement #c.counter.display(c.numbering)
+  ]
+  #text(fill: luma(130), size: 11pt)[
+  #c.separator#c.body
+  ]
+]
+]
+
+#show heading.where(
+  level: 1
+): it => [
+  #set align(left)
+  #set text(font:"Open Sans", 
+            weight: "semibold",
+            fill: rgb("#00559B"))
+  #pad(top: 1.5em, it.body)
 ]

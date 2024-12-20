@@ -83,5 +83,9 @@ gt(abundance_estimates |> dplyr::select(-StdError)) |>
 
 ## More Information
 
+{{< lipsum 1 >}}
+
+### Subheading
+
 {{< lipsum 3 >}}
 
