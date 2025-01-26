@@ -83,6 +83,8 @@ gt(abundance_estimates |> dplyr::select(-StdError)) |>
 
 ## More Information
 
+**Bold Statement** {{< lipsum 1 >}}
+
 {{< lipsum 1 >}}
 
 ### Subheading
