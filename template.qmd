@@ -60,7 +60,7 @@ gt(abundance_estimates |> dplyr::select(-StdError)) |>
   ) |>
   cols_label(Lower95CI = "95% Confidence Range") |> 
   gt_hulk_col_numeric(Pdecline, reverse = TRUE) |> 
-  opt_table_font(font = "Source Sans Pro") |> 
+  opt_table_font(font = "Open Sans") |> 
   opt_row_striping() |> 
   tab_options(table.width = px(700),
               table.font.size = 11) |> 

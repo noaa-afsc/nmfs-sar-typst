@@ -9,7 +9,5 @@ contributes:
       template-partials: 
         - typst-template.typ
         - typst-show.typ
-      font-paths: assets/fonts
-      format-resources:
-        - assets/*
+      font-paths: ../assets/fonts
 

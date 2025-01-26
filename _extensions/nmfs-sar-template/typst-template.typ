@@ -51,7 +51,7 @@
     // Define the background for the first page
     background: context { if(counter(page).get().at(0)== 1) {
       align(left + top)[
-      #image("_extensions/nmfs-sar-template/assets/22Fisheries SEA_T1 CornerTall.png", width: 20%)
+      #image("assets/22Fisheries SEA_T1 CornerTall.png", width: 20%)
     ]}
 } 
   )
