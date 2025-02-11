@@ -106,7 +106,7 @@
         text(11pt, weight: "semibold", author.name)
         h(1pt)
         if "affiliation" in author {
-          super(author.id)
+          super(author.affiliation)
         }
       }).join(", ", last: ", and ")
     })
