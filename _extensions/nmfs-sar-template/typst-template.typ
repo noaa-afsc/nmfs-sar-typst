@@ -45,14 +45,19 @@
     paper: paper,
     margin: margin,
     numbering: "1",
-    footer: align(left)[
+    footer: context [
       #set text(
         size: 8pt,
         font: "Open Sans",
         fill: rgb("#5EB6D9")
       )
       #date
-    ],
+      #h(1fr)
+      Page #counter(page).display(
+        "1 of 1",
+        both: true,
+    )
+  ],
     header: align(right + horizon)[
       #set text(
         size: 11pt,
@@ -99,6 +104,7 @@
   if authors.len() == 2 {
     box(inset: (left: 2em, right: 2em), {
       authors.map(author => {
+        set text(font: "Open Sans")
         text(11pt, weight: "semibold", author.name)
         h(1pt)
         if "affiliation" in author {
@@ -112,6 +118,7 @@
   if authors.len() > 2 {
     box(inset: (left: 2em, right: 2em), {
       authors.map(author => {
+        set text(font: "Open Sans")
         text(11pt, weight: "semibold", author.name)
         h(1pt)
         if "affiliation" in author {
@@ -124,10 +131,11 @@
 
   if affiliations.len() > 0 {
     box(inset: (left: 2em, right: 2em, bottom: 10pt), {
+      set text(font: "Open Sans", size: 9pt)
       affiliations.map(affil => {
         super(affil.id)
         h(1pt)
-        affil.name
+        affil.name + linebreak() + h(3pt) + affil.department
       }).join("\n")
     })
   }
