@@ -2,6 +2,7 @@
 title: Stock Assessment Report for a Cetacean or Pinniped Marine Mammal (_Genus species_) 
   in Alaska or the North Pacific Ocean. This title is especially long for demonstration
   purposes
+date: "today"
 format:
   nmfs-sar-template-typst: default
 

@@ -45,8 +45,17 @@
     paper: paper,
     margin: margin,
     numbering: "1",
+    footer: align(left)[
+      #set text(
+        size: 8pt,
+        font: "Open Sans",
+        fill: rgb("#5EB6D9")
+      )
+      #date
+    ],
     header: align(right + horizon)[
       #set text(
+        size: 11pt,
         font: "Open Sans",
         fill: rgb("#5EB6D9"))
       ALASKA MARINE MAMMAL STOCK ASSESSMENT REPORT],
@@ -121,12 +130,6 @@
         affil.name
       }).join("\n")
     })
-  }
-
-  if date != none {
-    align(center)[#block(inset: 1em)[
-      #date
-    ]]
   }
 
   if toc {
