@@ -103,8 +103,8 @@
 // Authors and Affiliations
   if authors.len() == 2 {
     box(inset: (left: 2em, right: 2em), {
+      set text(font: "Open Sans")
       authors.map(author => {
-        set text(font: "Open Sans")
         text(11pt, weight: "semibold", author.name)
         h(1pt)
         if "affiliation" in author {
@@ -117,8 +117,8 @@
 
   if authors.len() > 2 {
     box(inset: (left: 2em, right: 2em), {
+      set text(font: "Open Sans")
       authors.map(author => {
-        set text(font: "Open Sans")
         text(11pt, weight: "semibold", author.name)
         h(1pt)
         if "affiliation" in author {
