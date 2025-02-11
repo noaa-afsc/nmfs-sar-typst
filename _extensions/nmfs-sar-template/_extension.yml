@@ -1,4 +1,4 @@
-title: Nmfs-sar-template
+title: nmfs-sar-template
 author: Josh M. London
 version: 1.0.0
 quarto-required: ">=1.6.0"
@@ -9,4 +9,5 @@ contributes:
       template-partials: 
         - typst-template.typ
         - typst-show.typ
+      font-paths: ["assets/fonts"]
 

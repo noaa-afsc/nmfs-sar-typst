@@ -9,14 +9,15 @@ author:
   - name: Josh M. London
     email: josh.london@noaa.gov
     affiliations:
-      - ref: afsc
+      - ref: 1
   - name: Brian S. Fadely
     email: brian.fadely@noaa.gov
     affiliations:
-      - ref: afsc
+      - ref: 1
 affiliations:
-  - id: afsc
+  - id: 1
     name: Alaska Fisheries Science Center
+    department: National Marine Fisheries Service, NOAA
     city: Seattle
     state: Washington
     country: USA      

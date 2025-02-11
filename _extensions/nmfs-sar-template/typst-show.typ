@@ -21,15 +21,29 @@ $if(subtitle)$
 $endif$
 $if(by-author)$
   authors: (
-$for(by-author)$
-$if(it.name.literal)$
-    ( name: [$it.name.literal$],
-      affiliation: [$for(it.affiliations)$$it.name$$sep$, $endfor$],
-      email: [$it.email$] ),
+  $for(by-author)$
+      ( 
+        name: [$it.name.literal$],
+        affiliation: [$for(it.affiliations)$$it.id$$sep$, $endfor$],
+        $if(it.attributes.corresponding)$corresponding: $it.attributes.corresponding$,$endif$
+        $if(it.attributes.equal-contributor)$equal-contributor: $it.attributes.equal-contributor$,$endif$
+        $if(it.orcid)$orcid: "https://orcid.org/$it.orcid$",$endif$
+        $if(it.email)$email: [$it.email$]$endif$
+      ),
+  $endfor$
+  ),
 $endif$
-$endfor$
+$if(affiliations)$
+  affiliations: (
+    $for(affiliations)$(
+      id: "$it.id$",
+      name: "$it.name$",
+      $if(it.department)$department: "$it.department$"$endif$
     ),
+    $endfor$
+  ),
 $endif$
+
 $if(date)$
   date: [$date$],
 $endif$
@@ -110,10 +124,10 @@ $endif$
 #show figure.caption: c => [
   #set par(justify: true)
   #align(left)[
-  #text(fill: luma(130), weight: "bold", size: 11pt)[
+  #text(fill: luma(130), weight: "bold", size: 9pt)[
     #c.supplement #c.counter.display(c.numbering)
   ]
-  #text(fill: luma(130), size: 11pt)[
+  #text(fill: luma(130), size: 9pt)[
   #c.separator#c.body
   ]
 ]
