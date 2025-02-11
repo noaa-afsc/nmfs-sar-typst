@@ -15,8 +15,8 @@
 #let article(
   title: none,
   subtitle: none,
-  authors: (),
-  affiliations: (),
+  authors: none,
+  affiliations: none,
   date: none,
   abstract: none,
   abstract-title: none,
@@ -95,9 +95,6 @@
         if "affiliation" in author {
           super(author.affiliation)
         }
-        if "orcid" in author {
-          link("https://orcid.org/" + author.orcid)[#box(height: 1.1em, baseline: 13.5%)[#image.decode(orcidSvg)]]
-        }
       }).join(", ", last: " and ")
     })
     parbreak()
@@ -108,12 +105,8 @@
       authors.map(author => {
         text(11pt, weight: "semibold", author.name)
         h(1pt)
-        if "affiliations" in author {
-          author.affiliations.map()
+        if "affiliation" in author {
           super(author.id)
-        }
-        if "orcid" in author {
-          link("https://orcid.org/" + author.orcid)[#box(height: 1.1em, baseline: 13.5%)[#image.decode(orcidSvg)]]
         }
       }).join(", ", last: ", and ")
     })
