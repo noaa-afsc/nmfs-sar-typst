@@ -114,21 +114,21 @@ $endif$
 
 #show heading: it => block(width: 100%)[
   #set text(weight: "regular", 
-            font: "Open Sans",
+            font: "Roboto",
             fill: rgb("#00559B"))
   #(it.body)
 ]
 
 #show figure: set block(inset: (top: 1em, bottom: 1em))
 
-#show figure.caption: c => [
+#show figure.caption: c => context [
   #set par(justify: true)
   #align(left)[
-  #text(fill: luma(130), weight: "bold", size: 9pt)[
+  #text(fill: luma(130), weight: "bold", size: 10pt)[
     #c.supplement #c.counter.display(c.numbering)
   ]
-  #text(fill: luma(130), size: 9pt)[
-  #c.separator#c.body
+  #text(fill: luma(130), size: 10pt)[
+  #c.separator #c.body
   ]
 ]
 ]
@@ -137,7 +137,7 @@ $endif$
   level: 1
 ): it => [
   #set align(left)
-  #set text(font:"Open Sans", 
+  #set text(font:"Roboto", 
             weight: "semibold",
             fill: rgb("#00559B"))
   #pad(top: 1.5em, it.body)

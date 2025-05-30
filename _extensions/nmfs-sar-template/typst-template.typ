@@ -27,9 +27,9 @@
   region: "US",
   font: "STIX Two Text",
   fontsize: 11pt,
-  title-size: 1.5em,
+  title-size: 1.75em,
   subtitle-size: 1.25em,
-  heading-family: "Open Sans",
+  heading-family: "Roboto",
   heading-weight: "semibold",
   heading-style: "normal",
   heading-color: rgb("#00559B"),
@@ -48,7 +48,7 @@
     footer: context [
       #set text(
         size: 8pt,
-        font: "Open Sans",
+        font: "Roboto",
         fill: rgb("#5EB6D9")
       )
       #date
@@ -61,7 +61,7 @@
     header: align(right + horizon)[
       #set text(
         size: 11pt,
-        font: "Open Sans",
+        font: "Roboto",
         fill: rgb("#5EB6D9"))
       ALASKA MARINE MAMMAL STOCK ASSESSMENT REPORT],
     // Define the background for the first page
@@ -103,7 +103,7 @@
 // Authors and Affiliations
   if authors.len() == 2 {
     box(inset: (left: 2em, right: 2em), {
-      set text(font: "Open Sans")
+      set text(font: "Roboto")
       authors.map(author => {
         text(11pt, weight: "semibold", author.name)
         h(1pt)
@@ -117,7 +117,7 @@
 
   if authors.len() > 2 {
     box(inset: (left: 2em, right: 2em), {
-      set text(font: "Open Sans")
+      set text(font: "Roboto")
       authors.map(author => {
         text(11pt, weight: "semibold", author.name)
         h(1pt)
@@ -129,9 +129,10 @@
     parbreak()
   }
 
+
   if affiliations.len() > 0 {
     box(inset: (left: 2em, right: 2em, bottom: 10pt), {
-      set text(font: "Open Sans", size: 9pt)
+      set text(font: "Roboto", size: 9pt)
       affiliations.map(affil => {
         super(affil.id)
         h(1pt)
@@ -163,6 +164,6 @@
 }
 
 #set table(
-  inset: 6pt,
+  inset: 2pt,
   stroke: none
 )
