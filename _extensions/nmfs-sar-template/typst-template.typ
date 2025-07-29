@@ -10,22 +10,30 @@
 //   - https://typst.app/docs/tutorial/making-a-template/
 //   - https://github.com/typst/templates
 
+// #import "@preview/fancy-affil:0.1.0": get-affiliations
 
 #let article(
   title: none,
+  subtitle: none,
   authors: none,
   affiliations: none,
   date: none,
   abstract: none,
   abstract-title: none,
   cols: 1,
-  margin: (x: 1.22in, y: 1.2in),
+  margin: (x: 1.25in, y: 1.25in),
   paper: "us-letter",
   lang: "en",
   region: "US",
   font: "STIX Two Text",
-  font-paths: "_extensions/nmfs-sar-template/assets/fonts",
   fontsize: 11pt,
+  title-size: 1.75em,
+  subtitle-size: 1.25em,
+  heading-family: "Roboto",
+  heading-weight: "semibold",
+  heading-style: "normal",
+  heading-color: rgb("#00559B"),
+  heading-line-height: 0.65em,
   sectionnumbering: none,
   toc: false,
   toc_title: none,
@@ -33,91 +41,104 @@
   toc_indent: 1.5em,
   doc,
 ) = {
-   set page(
+  set page(
     paper: paper,
     margin: margin,
     numbering: "1",
+    footer: context [
+      #set text(
+        size: 8pt,
+        font: "Roboto",
+        fill: rgb("#5EB6D9")
+      )
+      #date
+      #h(1fr)
+      Page #counter(page).display(
+        "1 of 1",
+        both: true,
+    )
+  ],
     header: align(right + horizon)[
       #set text(
-        font: "Open Sans",
+        size: 11pt,
+        font: "Roboto",
         fill: rgb("#5EB6D9"))
       ALASKA MARINE MAMMAL STOCK ASSESSMENT REPORT],
     // Define the background for the first page
     background: context { if(counter(page).get().at(0)== 1) {
       align(left + top)[
-      #image("_extensions/nmfs-sar-template/assets/22Fisheries SEA_T1 CornerTall.png", width: 20%)
-    ]}
-} 
+      #image("/assets/22Fisheries SEA_T1 CornerTall.png", width: 20%)
+    ]}} 
   )
-
-  set par(justify: true)
+  
   set text(lang: lang,
-           region: region,
-           font: font,
-           size: fontsize,
-           fill: rgb("#323C46"))
+    region: region,
+    font: font,
+    size: fontsize,
+    fill: rgb("#323C46"))
+
   set heading(numbering: sectionnumbering)
-
   if title != none {
-    [#grid(columns: (85%,1fr),
-            align: (left + top),
-            inset: (y: 10pt)
-  )[
-      #text(weight: "semibold", 
-            size: 1.5em, 
-            font: "Open Sans",
-            fill: rgb("#00559B"))[#title]
-    ][]]
-  }
-
-text(authors.enumerate().map(((i, author)) => author.name + [ ] + super[#(i+1)]).join(", "))
-    v(2pt)
-set text(9pt)
-text(authors.enumerate().map(((i, author)) => super[#(i+1)]+ [ ] + author.email).join(", "))
-set text(size: fontsize)
-
-/*   grid(
-    columns: (20%,75%),
-    column-gutter: 5%,
-    {image("assets/640x427-harbor-seal.png") 
-    text(10pt)[Some Seal Species \ (_Genus species_)]},
-      if abstract != none { 
-    block(fill: rgb("#F1F2F3"), inset: 1em)[
-    #text(font: "Source Sans 3")[#abstract]
-    ]
-  }
-
-     // Display the authors list.
-  for i in range(calc.ceil(authors.len() / 3)) {
-    let end = calc.min((i + 1) * 3, authors.len())
-    let is-last = authors.len() == end
-    let slice = authors.slice(i * 3, end)
-    set align(right)
-    grid(
-      columns: 1,
-      rows: slice.len(),
-      row-gutter: 1em,
-      ..slice.map(author => align(right, {
-        text(font: "Source Sans 3", weight: "semibold", author.name)
-        if "email" in author [
-          \ #text(font: "Source Sans 3", size: 0.75em, author.email)
-        ]
-      }))
-    )
-
-    if not is-last {
-      v(16pt, weak: true)
-    }
-  } 
-  ) */
-  v(2em, weak: true)
-
-
-
-  if date != none {
-    align(center)[#block(inset: 1em)[
-      #date
+    align(left)[#block(inset: (left: 2em, right: 2em, top: 2em, bottom: 1em))[
+      #set par(leading: heading-line-height)
+      #if (heading-family != none or heading-weight != "bold" or heading-style != "normal"
+          or heading-color != black or heading-decoration == "underline"
+          or heading-background-color != none) {
+        set text(font: heading-family, weight: heading-weight, style: heading-style, fill: heading-color)
+        text(size: title-size)[#title]
+        if subtitle != none {
+          parbreak()
+          text(size: subtitle-size)[#subtitle]
+        }
+      } else {
+        text(weight: "bold", size: title-size)[#title]
+        if subtitle != none {
+          parbreak()
+          text(weight: "bold", size: subtitle-size)[#subtitle]
+        }
+      }
     ]]
+  }
+
+// Authors and Affiliations
+  if authors.len() == 2 {
+    box(inset: (left: 2em, right: 2em), {
+      set text(font: "Roboto")
+      authors.map(author => {
+        text(11pt, weight: "semibold", author.name)
+        h(1pt)
+        if "affiliation" in author {
+          super(author.affiliation)
+        }
+      }).join(", ", last: " and ")
+    })
+    parbreak()
+  }
+
+  if authors.len() > 2 {
+    box(inset: (left: 2em, right: 2em), {
+      set text(font: "Roboto")
+      authors.map(author => {
+        text(11pt, weight: "semibold", author.name)
+        h(1pt)
+        if "affiliation" in author {
+          super(author.affiliation)
+        }
+      }).join(", ", last: ", and ")
+    })
+    parbreak()
+  }
+
+
+  if affiliations.len() > 0 {
+    box(inset: (left: 2em, right: 2em, bottom: 10pt), {
+      set text(font: "Roboto", size: 9pt)
+      affiliations.map(affil => {
+        super(affil.id)
+        h(1pt)
+        affil.name + linebreak() + h(3pt) + affil.department
+      }).join("\n")
+    })
   }
 
   if toc {
@@ -143,6 +164,6 @@ set text(size: fontsize)
 }
 
 #set table(
-  inset: 6pt,
+  inset: 2pt,
   stroke: none
 )
