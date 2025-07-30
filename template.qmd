@@ -4,7 +4,10 @@ title: Stock Assessment Report for a Cetacean or Pinniped Marine Mammal (_Genus 
   purposes
 date: "today"
 format:
-  nmfs-sar-template-typst: default
+  nmfs-sar-template-typst:
+    nmfs-region: Alaska
+    sar-year: 2050
+    stock-name: "All Alaska Stocks"
 
 author:
   - name: Josh M. London

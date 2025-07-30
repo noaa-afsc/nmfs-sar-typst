@@ -35,10 +35,16 @@
   heading-color: rgb("#00559B"),
   heading-line-height: 0.65em,
   sectionnumbering: none,
+  linenumbering: true,
   toc: false,
   toc_title: none,
   toc_depth: none,
   toc_indent: 1.5em,
+  nmfs-region: none,
+  sar-year: none,
+  common-name: "Common Name",
+  genus-species: "Genus species",
+  stock-name: none,
   doc,
 ) = {
   set page(
@@ -63,7 +69,8 @@
         size: 11pt,
         font: "Roboto",
         fill: rgb("#5EB6D9"))
-      ALASKA MARINE MAMMAL STOCK ASSESSMENT REPORT],
+      Marine Mammal Stock Assessment Report - #nmfs-region#sar-year \
+      #common-name (#emph[#genus-species])#stock-name],
     // Define the background for the first page
     background: context { if(counter(page).get().at(0)== 1) {
       align(left + top)[
@@ -98,6 +105,13 @@
         }
       }
     ]]
+  }
+
+// Styled gray line numbers.
+  if linenumbering {
+    set par.line(numbering: n => text(gray)[#n])
+  } else {
+    set par.line(numbering: none)
   }
 
 // Authors and Affiliations

@@ -43,7 +43,21 @@ $if(affiliations)$
     $endfor$
   ),
 $endif$
-
+$if(nmfs-region)$
+  nmfs-region: "$nmfs-region$",
+$endif$
+$if(common-name)$
+  common-name: "$common-name$",
+$endif$
+$if(genus-species)$
+  genus-species: "$genus-species$",
+$endif$
+$if(sar-year)$
+  sar-year: ", $sar-year$",
+$endif$
+$if(stock-name)$
+  stock-name: " - $stock-name$",
+$endif$
 $if(date)$
   date: [$date$],
 $endif$

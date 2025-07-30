@@ -10,10 +10,4 @@ contributes:
         - typst-template.typ
         - typst-show.typ
       font-paths: ["assets/fonts"]
-      include-in-header:
-      - text: |
-          // Styled gray line numbers.
-          #set par.line(numbering: n => text(gray)[#n])
-          // Disable numbers inside figures.
-          #show figure: set par.line(numbering: none)
 
