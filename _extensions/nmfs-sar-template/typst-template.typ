@@ -65,19 +65,6 @@
         both: true,
     )
   ],
-    footer: context [
-      #set text(
-        size: 8pt,
-        font: "Roboto",
-        fill: rgb("#5EB6D9")
-      )
-      #date
-      #h(1fr)
-      Page #counter(page).display(
-        "1 of 1",
-        both: true,
-    )
-  ],
     header: align(right + horizon)[
       #set text(
         size: 11pt,
