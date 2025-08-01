@@ -10,8 +10,6 @@
 //   - https://typst.app/docs/tutorial/making-a-template/
 //   - https://github.com/typst/templates
 
-// #import "@preview/fancy-affil:0.1.0": get-affiliations
-
 #let article(
   title: none,
   subtitle: none,
@@ -47,6 +45,9 @@
   stock-name: none,
   doc,
 ) = {
+
+  let runningtitle = "Marine Mammal Stock Assessment Report - " + nmfs-region + " " + sar-year + linebreak() + common-name + " (" + emph[genus-species] + ")" + stock-name
+
   set page(
     paper: paper,
     margin: margin,
@@ -69,8 +70,9 @@
         size: 11pt,
         font: "Roboto",
         fill: rgb("#5EB6D9"))
-      Marine Mammal Stock Assessment Report - #nmfs-region#sar-year \
-      #common-name (#emph[#genus-species])#stock-name],
+      #runningtitle],
+    // Marine Mammal Stock Assessment Report - #nmfs-region#sar-year \
+    // #common-name (#emph[#genus-species])#stock-name],
     // Define the background for the first page
     background: context { if(counter(page).get().at(0)== 1) {
       align(left + top)[
