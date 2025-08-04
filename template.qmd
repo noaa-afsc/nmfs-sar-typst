@@ -142,11 +142,11 @@ gt(abundance_estimates |> dplyr::select(-StdError)) |>
   ) |>
   cols_label(Lower95CI = "95% Confidence Range") |>
   gt_hulk_col_numeric(Pdecline, reverse = TRUE) |>
-  opt_table_font(font = "Open Sans") |>
+  opt_table_font(font = "Roboto") |>
   opt_row_striping() |>
   tab_options(table.width = px(700), table.font.size = 11) |>
   cols_width(
-    Stock ~ pct(30)
+    Stock ~ pct(20)
   ) |>
   tab_style(
     style = cell_text(color = "dodgerblue4", size = px(12), weight = "bold"),
