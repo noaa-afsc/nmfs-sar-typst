@@ -1,6 +1,5 @@
 /*
-This is a Typst template file for a NOAA Fisheries Stock Assessment Report (SAR).
-It is based on the official NOAA SAR template, but has been adapted for use with Typst.
+This is a Typst template file for a NOAA Fisheries Stock Assessment Reports (SAR) for marine mammals.
 */
 
 // Function to set up the document's style.

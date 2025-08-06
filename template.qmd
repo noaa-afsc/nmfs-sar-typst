@@ -13,7 +13,7 @@ format:
     common-name: "Common Name"
     genus-species: "Genus species"
     linenumbering: true
-    keep-typ: true
+    keep-typ: false
 
 author:
   - name: Josh M. London
