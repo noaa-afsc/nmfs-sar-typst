@@ -6,7 +6,7 @@
 }
 
 @font-face {
-    font-family: "Open Sans";
+    font-family: "Roboto";
     /* declare weights giving two values to specify a range */
     font-weight: 300 800;
     font-style: normal;
@@ -14,7 +14,7 @@
   }
 
   @font-face {
-    font-family: "Open Sans";
+    font-family: "Roboto";
     /* declare weights giving two values to specify a range */
     font-weight: 300 800;
     font-style: italic;
@@ -41,7 +41,7 @@ $headings-color:              $noaa-dark-blue;
 /*-- scss:rules --*/
 
 #TOC {
-    background: url(assets/NOAA_FISHERIES_logoH.png);
+    background: url("assets/NOAA_FISHERIES_logoH.png");
     background-size: contain;
     padding-top: 100px !important;
     background-repeat: no-repeat;

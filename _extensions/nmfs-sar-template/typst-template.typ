@@ -77,7 +77,7 @@ This is a Typst template file for a NOAA Fisheries Stock Assessment Reports (SAR
     background: context { 
       if(counter(page).get().at(0) == 1) {
         align(left + top)[
-          #image("assets/22Fisheries SEA_T1 CornerTall.png", width: 20%)
+          #image("/assets/22Fisheries SEA_T1 CornerTall.png", width: 20%)
         ]
       }
     } 
