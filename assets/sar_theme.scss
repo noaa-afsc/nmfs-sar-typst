@@ -1,0 +1,84 @@
+@font-face {
+    font-family: "STIX Two Text";
+    font-style: normal;
+    font-weight: 400;
+    src: url("assets/fonts/STIXTwoText-Regular.otf"); 
+}
+
+@font-face {
+    font-family: "Roboto";
+    /* declare weights giving two values to specify a range */
+    font-weight: 300 800;
+    font-style: normal;
+    src: url("assets/fonts/Roboto-Regular.ttf");
+  }
+
+  @font-face {
+    font-family: "Roboto";
+    /* declare weights giving two values to specify a range */
+    font-weight: 300 800;
+    font-style: italic;
+    src: url("assets/fonts/Roboto-Italic.ttf");
+  }
+
+/*-- scss:defaults --*/
+// NOAA Fisheries colors
+
+$noaa-dark-blue: #003087;
+$noaa-light-blue: #0085CA;
+$noaa-whale-gray: #323C46;
+$noaa-dove-gray: "#A5AAAF";
+$noaa-midnight-sky: "#001743";
+$medium-sea-blue: "#056FB7";
+
+// fonts
+
+$font-family-base:         "STIX Two Text" !default;
+$font-family-sans-serif:   "Roboto";
+$font-color:               "black";
+
+$headings-font-family:        "Roboto";
+$headings-color:              $noaa-dark-blue;
+
+
+
+/*-- scss:rules --*/
+
+#TOC {
+    background: url("assets/NOAA_FISHERIES_logoH.png");
+    background-size: contain;
+    padding-top: 100px !important;
+    background-repeat: no-repeat;
+  }
+
+header.headroom, .quarto-title-block, .sidebar {
+    font-family: "Roboto";
+}
+
+.navbar-brand {
+    color: $noaa-whale-gray;
+}
+
+.title, .subtitle {
+    color: $noaa-light-blue;
+}
+
+.quarto-title-meta {
+    border-bottom: 1px solid $noaa-whale-gray;
+}
+
+.quarto-title-meta-author {
+    border-top: 1px solid $noaa-whale-gray;
+}
+
+figcaption {
+    text-align: justify;
+    font-size: 1em;
+    color: $noaa-dark-blue;
+}
+
+figure.quarto-float-tbl figcaption.quarto-float-caption-top {
+    text-align: justify;
+    font-size: 1em;
+    color: $noaa-dark-blue;
+  }
