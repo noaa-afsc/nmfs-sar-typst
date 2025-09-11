@@ -3,7 +3,7 @@ title: Stock Assessment Report for a Cetacean or Pinniped Marine Mammal (_Genus 
   in Alaska or the North Pacific Ocean. This title is especially long for demonstration
   purposes
 date: today
-publication-date: "2025-09-15"
+publication-date: "2050-09-15"
 date-format: "MMMM DD, YYYY"
 format:
   nmfs-sar-template-typst:
