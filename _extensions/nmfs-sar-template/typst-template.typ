@@ -70,7 +70,7 @@ This is a Typst template file for a NOAA Fisheries Stock Assessment Reports (SAR
       Page #counter(page).display("1 of 1", both: true)
     ],
     header: align(right + horizon)[
-      #set text(size: 11pt, font: "Roboto", fill: rgb("#5EB6D9"))
+      #set text(size: 9pt, font: "Roboto", fill: rgb("#5EB6D9"))
       #set par(leading: 0.6em)
       #runningtitle
     ],
