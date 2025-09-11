@@ -6,7 +6,7 @@ date: today
 publication-date: "2050-09-15"
 date-format: "MMMM DD, YYYY"
 format:
-  nmfs-sar-template-typst:
+  nmfs-sar-pdf-typst:
     nmfs-region: NMFS Region
     sar-year: 2050
     stock-name: "All Stocks"
