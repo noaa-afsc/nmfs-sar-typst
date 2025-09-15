@@ -3,7 +3,7 @@
 ## Installing
 
 ```bash
-quarto use template noaa-afsc/nmfs-sar-template
+quarto use template noaa-afsc/nmfs-sar-typst
 ```
 
 This will install the format extension and create an example qmd file
